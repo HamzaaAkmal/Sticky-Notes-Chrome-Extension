@@ -1,71 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 @import url('https://cdn-uicons.flaticon.com/3.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css');
+
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
 
-@font-face {
-    font-family: "Inter", sans-serif;
-    src: url("font/Inter.ttc") format("truetype");
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: "Circular", sans-serif;
-    src: url("font/circular.ttc") format("truetype");
-    font-weight: normal;
-    font-style: normal;
-}
-
 :root {
-    --stickyBG: #ffd165;
-    --textColor: #333333;
-    --strickyContentBG: rgb(53, 53, 53);
-    --mainHoverColor: #a0d1e8;
-    --sColor: #a0d1e844;
-    --dBtnColor: #ff6b6b;
-    --dBtnColorHover: #ff4f4f;
-    --h1TitlteSize: 1rem;
-    --noteFontSize: 0.8rem;
-    --defaultFontSize: 0.9rem;
-    --defaultFont: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-    --cFont: 'Circular', sans-serif;
-    --titleFont: "Inter", sans-serif;
-    /* --borderColor: rgba(128, 128, 128, 0.416); */
-    --borderColor: rgba(128, 128, 128, 0.493);
-    --divider: rgba(128, 128, 128, 0.705);
-    --defaultColor: rgb(133, 133, 133);
-    --appVersion: rgb(133, 133, 133);
+    --primary-gradient: linear-gradient(135deg, #ffd165 0%, #ffb84d 100%);
+    --secondary-gradient: linear-gradient(135deg, #fff9e6 0%, #ffe9b3 100%);
+    --bg-light: #fff9e6;
+    --text-dark: #1a1a1a;
+    --text-gray: #666;
+    --border-color: #ffe9b3;
+    --shadow-sm: 0 2px 8px rgba(255, 193, 7, 0.15);
+    --shadow-md: 0 4px 12px rgba(255, 193, 7, 0.2);
 }
-
-
-/* General body styling */
 
 body {
-    font-family: var(--defaultFont);
-    font-size: var(--defaultFontSize);
-    color: var(--textColor);
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    color: var(--text-dark);
     width: 400px;
-    overflow-x: hidden;
+    background: white;
+    padding-top: 48px;
 }
 
+/* Rate Banner */
+.rate-banner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, #ffd165 0%, #ffb84d 100%);
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 12px rgba(255, 193, 7, 0.3);
+    z-index: 1000;
+}
 
-/* sticky box */
+.banner-content {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: white;
+    font-weight: 600;
+    font-size: 12px;
+}
+
+.banner-content i {
+    font-size: 16px;
+}
+
+.banner-cta {
+    background: white;
+    color: #ffb84d;
+    padding: 6px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.banner-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.banner-cta i {
+    font-size: 14px;
+}
 
 .sticky-box {
-    position: relative;
     width: 400px;
-    /* border: 1px solid black; */
-    height: auto;
-    min-height: 250px;
+    min-height: 300px;
     max-height: 600px;
     overflow-y: auto;
-    /* display: none; */
 }
 
-/* Custom Scrollbar for notes container */
 .sticky-box::-webkit-scrollbar {
     width: 6px;
 }
@@ -75,29 +95,168 @@ body {
 }
 
 .sticky-box::-webkit-scrollbar-thumb {
-    background-color: #ccc;
-    border-radius: 20px;
-    border: 1px solid #f1f1f1;
+    background: linear-gradient(135deg, #ffd165 0%, #ffb84d 100%);
+    border-radius: 10px;
 }
 
 .sticky-box::-webkit-scrollbar-thumb:hover {
-    background-color: #aaa;
+    background: linear-gradient(135deg, #ffb84d 0%, #ffa940 100%);
 }
 
-.notes-container {}
-
-
-/* popup title */
-
+/* Header */
 .ap-sn-title-box {
-    position: fixed;
+    position: sticky;
     top: 0;
-    box-shadow: 0 0 5px var(--borderColor);
-    /* border-bottom: 1px solid black; */
-    padding: 10px;
+    background: linear-gradient(135deg, #fff9e6 0%, #fff3d4 100%);
+    padding: 14px 16px;
+    border-bottom: 2px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(255, 193, 7, 0.1);
+}
+
+.ap-sn-logo {
+    width: 36px;
+    height: 36px;
+    filter: drop-shadow(0 2px 4px rgba(255, 193, 7, 0.3));
+    flex-shrink: 0;
+}
+
+.header-right-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+    min-width: 0;
+    position: relative;
+}
+
+/* Theme Picker */
+.popup-theme-picker-btn {
+    width: 44px;
+    height: 44px;
+    background: white;
+    border: 2px solid #ffe9b3;
+    border-radius: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(255, 193, 7, 0.15);
+    flex-shrink: 0;
+}
+
+.popup-theme-picker-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 193, 7, 0.25);
+    background: linear-gradient(135deg, #ffd165 0%, #ffb84d 100%);
+}
+
+.popup-theme-picker-btn i {
+    font-size: 20px;
+    color: #ffd165;
+    transition: color 0.3s ease;
+}
+
+.popup-theme-picker-btn:hover i {
+    color: white;
+}
+
+.popup-theme-palette {
+    position: absolute;
+    top: 54px;
+    left: 48px;
+    background: white;
+    border: 2px solid #ffe9b3;
+    border-radius: 16px;
+    padding: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    min-width: 200px;
+}
+
+.palette-header {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+.color-swatches {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+
+.popup-color-swatch {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 3px solid transparent;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.popup-color-swatch:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.popup-color-swatch.active {
+    border-color: white;
+    box-shadow: 0 0 0 3px var(--text-dark), 0 4px 16px rgba(0, 0, 0, 0.25);
+    transform: scale(1.05);
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    background: white;
+    border: 2px solid #ffe9b3;
+    border-radius: 24px;
+    padding: 10px 16px;
+    flex: 1;
+    min-width: 0;
+    max-width: 100%;
+    height: 44px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(255, 193, 7, 0.15);
+}
+
+.search-container:focus-within {
+    border-color: #ffd165;
+    box-shadow: 0 0 0 3px rgba(255, 209, 101, 0.2);
+}
+
+.search-container i {
+    color: #999;
+    margin-right: 10px;
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+#search-input {
+    border: none;
+    background: transparent;
+    outline: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
     width: 100%;
-    height: 45px;
-    background-color: #fff;
+    box-shadow: none;
+    min-width: 0;
+    color: var(--text-dark);
+    font-weight: 500;
+}
+
+#search-input::placeholder {
+    color: #999;
+}
     z-index: 10;
     display: flex;
     align-items: center;
@@ -157,25 +316,49 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-left: 10px;
-    color: #555;
+    gap: 8px;
+    padding: 0 16px;
+    height: 44px;
+    background: white;
+    border: 2px solid #ffe9b3;
+    border-radius: 24px;
+    color: #ffd165;
     text-decoration: none;
-    font-size: 1.2rem;
-    transition: color 0.2s ease;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(255, 193, 7, 0.15);
+    flex-shrink: 0;
+}
+
+.dashboard-link i {
+    font-size: 20px;
+}
+
+.dashboard-link .dashboard-text {
+    font-size: 14px;
+    color: inherit;
+    font-weight: 600;
 }
 
 .dashboard-link:hover {
-    color: var(--mainHoverColor);
+    background: linear-gradient(135deg, #ffd165 0%, #ffb84d 100%);
+    color: white;
+    border-color: #ffd165;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 193, 7, 0.25);
 }
 
 
 /* Domain section styling */
 
 .domain-container {
-    margin-top: 10px;
-    padding: 0 10px;
-    border-bottom: 1px dashed #adadad;
-    border-radius: 1px;
+    margin: 0;
+    padding: 0 16px;
+    border-bottom: 2px solid var(--border-color);
+    background: white;
 }
 
 .domain-header {
@@ -183,13 +366,18 @@ body {
     justify-content: space-between;
     align-items: center;
     cursor: pointer;
-    padding: 10px 0;
+    padding: 14px 0;
+    transition: all 0.3s ease;
+}
+
+.domain-header:hover {
+    color: #ffd165;
 }
 
 .chevron-icon {
     transition: transform 0.3s ease;
     font-size: 1.2rem;
-    color: #555;
+    color: #ffd165;
 }
 
 .domain-container.collapsed .chevron-icon {
@@ -204,7 +392,7 @@ body {
 
 .notes-wrapper {
     overflow: hidden;
-    padding-bottom: 15px;
+    padding-bottom: 12px;
 }
 
 .domain-container.collapsed .notes-list {
@@ -212,33 +400,13 @@ body {
 }
 
 .domain-container.collapsed {
-    border-bottom: none;
-    /* Remove default dashed line */
+    border-bottom: 2px solid var(--border-color);
     position: relative;
-    padding-bottom: 5px;
-    /* Create a bit of space */
+    padding-bottom: 0;
 }
 
 .domain-container.collapsed::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    /* Position it slightly below to overlap and connect */
-    left: 10px;
-    /* Align with container's horizontal padding */
-    right: 10px;
-    /* Align with container's horizontal padding */
-    height: 15px;
-    background-color: rgba(128, 128, 128, 0.12);
-    /* Same as note's torn paper bg */
-    /* This mask creates a torn effect at the TOP of the element.
-       Since we want it at the bottom of the collapsed container, this is correct. */
-    -webkit-mask-image: radial-gradient(circle at 50% 0, transparent 0, transparent 6px, black 7px);
-    mask-image: radial-gradient(circle at 50% 0, transparent 0, transparent 6px, black 7px);
-    -webkit-mask-size: 25px 15px;
-    mask-size: 25px 15px;
-    -webkit-mask-repeat: repeat-x;
-    mask-repeat: repeat-x;
+    display: none;
 }
 
 .domain-container.collapsed+.domain-container {
@@ -295,99 +463,56 @@ h3.ap-sn-site-title {
 
 .note-item {
     position: relative;
-    padding: 10px;
+    padding: 12px 14px;
     background-color: transparent;
-    font-size: var(--noteFontSize);
+    font-size: 14px;
     color: #333;
-    border: 1px solid #cccccc97;
-    /* box-shadow: 0 0px 2px rgba(0, 0, 0, 0.1); */
-    line-height: 1.5;
-    border-radius: 4px;
+    border: 2px solid var(--border-color);
+    line-height: 1.6;
+    border-radius: 8px;
     word-break: break-word;
-    padding-left: 14px;
+    margin-bottom: 8px;
+    transition: all 0.3s ease;
+}
+
+.note-item:hover {
+    border-color: #ffd165;
+    background: linear-gradient(135deg, #fff9e6 0%, #fff3d4 100%);
+    transform: translateX(4px);
 }
 
 .note-item-title {
-    font-weight: 600;
-    font-size: 0.85rem;
-    margin-bottom: 4px;
-    color: #111;
+    font-weight: 700;
+    font-size: 15px;
+    margin-bottom: 6px;
+    color: var(--text-dark);
     word-break: break-word;
+    font-family: 'Poppins', sans-serif;
 }
 
 .note-item.editing {
-    background-color: #fef9e7;
-    /* A light yellow to indicate editing */
-    border-color: #f1c40f;
-    /* A stronger yellow for the border */
+    background: linear-gradient(135deg, #fff9e6 0%, #fff3d4 100%);
+    border-color: #ffd165;
 }
 
 .note-item span[contenteditable="true"] {
-    outline: 1px dashed #f1c40f;
-    padding: 2px;
-    margin: -2px;
-    /* Offset padding */
-    border-radius: 2px;
+    outline: 2px dashed #ffd165;
+    padding: 4px;
+    margin: -4px;
+    border-radius: 4px;
     background-color: #fff;
 }
 
-.note-item::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: transparent;
-    border-radius: 4px;
-    /* Match parent's border-radius */
-    z-index: -1;
-    transition: background-color 0.3s ease;
-}
-
-.note-item:hover::before {
-    background-color: var(--sColor);
-}
-
-.note-item+.note-item {
-    margin-top: -1px;
-}
-
-.note-item:not(:first-child) {
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-}
-
-.note-item:not(:last-child) {
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-}
-
-.note-item:first-child {
-    margin-top: 10px;
-    /* Give it some space from the header */
-    border-top: none;
-    /* Remove the straight top border */
-    padding-top: 20px;
-    /* Add padding to push content down from the wave */
-}
-
-.note-item:first-child::before {
-    background-color: rgba(128, 128, 128, 0.12);
-    /* Wave/torn paper effect for the first note in each domain */
-    -webkit-mask-image: radial-gradient(circle at 50% 0, transparent 0, transparent 6px, black 7px);
-    mask-image: radial-gradient(circle at 50% 0, transparent 0, transparent 6px, black 7px);
-    -webkit-mask-size: 25px 15px;
-    mask-size: 25px 15px;
-    -webkit-mask-repeat: repeat-x;
-    mask-repeat: repeat-x;
+.note-item + .note-item {
+    margin-top: 0;
 }
 
 .note-options {
     display: none;
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 8px;
+    right: 8px;
+    gap: 6px;
 }
 
 .note-item:hover .note-options {
@@ -396,37 +521,51 @@ h3.ap-sn-site-title {
 
 .p-delete-note-btn {
     border: none;
-    background-color: var(--dBtnColor);
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
     color: #fff;
-    transition: all 0.3s ease-out;
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 6px rgba(255, 107, 107, 0.3);
 }
 
 .p-delete-note-btn:hover {
-    box-shadow: inset 0 0 20px #f02626;
-    transition: all 0.3s ease-out;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 107, 107, 0.4);
 }
 
 .edit-note-button {
-    background-color: #f39c12;
-    /* Orange for edit */
+    background: linear-gradient(135deg, #ffd165 0%, #ffb84d 100%);
     color: white;
     border: none;
-    transition: all 0.3s ease-out;
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 6px rgba(255, 193, 7, 0.3);
 }
 
 .edit-note-button:hover {
-    box-shadow: inset 0 0 20px #d35400;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 193, 7, 0.4);
 }
 
 .save-note-button {
-    background-color: #2ecc71;
-    /* Green for save */
+    background: linear-gradient(135deg, #a0e8b1 0%, #7ed396 100%);
     color: white;
     border: none;
-    transition: all 0.3s ease-out;
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 6px rgba(160, 232, 177, 0.3);
 }
 
 .save-note-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(160, 232, 177, 0.4);
+}
     box-shadow: inset 0 0 20px #27ae60;
 }
 
@@ -505,18 +644,56 @@ h3.ap-sn-site-title {
 
 /* footer */
 
+/* Footer */
 .ap-sn-footer-box {
     position: fixed;
     bottom: 0;
-    background-color: #fff;
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, #fff9e6 0%, #fff3d4 100%);
+    border-top: 2px solid var(--border-color);
+    width: 100%;
+    padding: 12px 16px;
+    box-shadow: 0 -2px 8px rgba(255, 193, 7, 0.1);
+}
+
+.footer-content {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    height: 45px;
-    padding: 10px;
-    box-shadow: 0 0 5px var(--borderColor);
-    /* font-family: var(--cFont); */
+    justify-content: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--text-gray);
+}
+
+.app-version {
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.footer-divider {
+    color: var(--border-color);
+}
+
+.powered-by {
+    color: var(--text-gray);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.powered-by:hover {
+    color: #ffd165;
+}
+
+.powered-by strong {
+    font-weight: 700;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .ap-sn-version-product {
@@ -539,11 +716,6 @@ h3.ap-sn-site-title {
 
 .ap-sn-footer-box p a {
     color: var(--defaultColor);
-}
-
-.app-version {
-    color: var(--appVersion);
-    font-size: 0.6rem;
 }
 
 

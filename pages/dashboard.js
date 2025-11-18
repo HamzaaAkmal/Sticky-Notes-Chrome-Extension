@@ -6,6 +6,90 @@ document.addEventListener("DOMContentLoaded", () => {
     let allNotesData = {};
     let activeDomain = "all";
 
+    // Theme colors configuration
+    const THEME_COLORS = {
+        yellow: { start: '#ffd165', end: '#ffb84d', bg: '#fff9e6', bgEnd: '#fff3d4', border: '#ffe9b3' },
+        pink: { start: '#ff9b71', end: '#ff7f6e', bg: '#ffe9e6', bgEnd: '#ffd9d4', border: '#ffb3a8' },
+        blue: { start: '#a0d1e8', end: '#7eb5d3', bg: '#e6f4f9', bgEnd: '#d4ebf4', border: '#b3dce9' },
+        purple: { start: '#d3a0e8', end: '#b77ed3', bg: '#f4e6f9', bgEnd: '#ebd4f4', border: '#dcb3e9' },
+        green: { start: '#a0e8b1', end: '#7ed396', bg: '#e6f9eb', bgEnd: '#d4f4dd', border: '#b3e9c4' },
+        red: { start: '#e8a0a0', end: '#d37e7e', bg: '#f9e6e6', bgEnd: '#f4d4d4', border: '#e9b3b3' }
+    };
+
+    // Load saved theme or default to yellow
+    function loadTheme() {
+        chrome.storage.local.get(['dashboardTheme'], (result) => {
+            const theme = result.dashboardTheme || 'yellow';
+            applyTheme(theme);
+        });
+    }
+
+    // Apply theme to dashboard
+    function applyTheme(colorKey) {
+        const colors = THEME_COLORS[colorKey];
+        const root = document.documentElement;
+        
+        root.style.setProperty('--primary-start', colors.start);
+        root.style.setProperty('--primary-end', colors.end);
+        root.style.setProperty('--bg-color', colors.bg);
+        root.style.setProperty('--border-color', colors.border);
+        
+        // Update body background
+        document.body.style.background = `linear-gradient(135deg, ${colors.bg} 0%, ${colors.bgEnd} 100%)`;
+        
+        // Update banner
+        const banner = document.querySelector('.rate-banner');
+        if (banner) {
+            banner.style.background = `linear-gradient(135deg, ${colors.start} 0%, ${colors.end} 100%)`;
+        }
+        
+        // Update banner CTA color
+        const bannerCta = document.querySelector('.banner-cta');
+        if (bannerCta) {
+            bannerCta.style.color = colors.end;
+        }
+        
+        // Save theme preference
+        chrome.storage.local.set({ dashboardTheme: colorKey });
+        
+        // Update active swatch
+        document.querySelectorAll('.color-swatch').forEach(swatch => {
+            swatch.classList.toggle('active', swatch.dataset.color === colorKey);
+        });
+    }
+
+    // Theme picker functionality
+    function initThemePicker() {
+        const themeBtn = document.getElementById('theme-picker-btn');
+        const themePalette = document.getElementById('theme-palette');
+        
+        if (!themeBtn || !themePalette) return;
+        
+        themeBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            themePalette.style.display = themePalette.style.display === 'flex' ? 'none' : 'flex';
+        });
+        
+        document.querySelectorAll('.color-swatch').forEach(swatch => {
+            swatch.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const colorKey = swatch.dataset.color;
+                applyTheme(colorKey);
+                themePalette.style.display = 'none';
+            });
+        });
+        
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.header-left')) {
+                themePalette.style.display = 'none';
+            }
+        });
+    }
+
+    // Initialize theme
+    loadTheme();
+    initThemePicker();
+
     function getMainDomain(url) {
         try {
             if (!url.startsWith("https://") && !url.startsWith("http://")) {

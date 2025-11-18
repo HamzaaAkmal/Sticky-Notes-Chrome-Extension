@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
 /* General Reset & Font Setup */
 * {
     margin: 0;
@@ -5,28 +7,75 @@
     box-sizing: border-box;
 }
 
-@font-face {
-    font-family: "Inter", sans-serif;
-    src: url("../font/Inter.ttc") format("truetype");
-}
-
 :root {
-    --font-primary: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    --bg-color: #f9fafb;
+    --font-primary: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --yellow-gradient: linear-gradient(135deg, #ffd165 0%, #ffb84d 100%);
+    --bg-color: #fff9e6;
     --sidebar-bg: #ffffff;
     --card-bg: #ffffff;
-    --text-primary: #1f2937;
-    --text-secondary: #6b7280;
-    --border-color: #e5e7eb;
+    --text-primary: #1a1a1a;
+    --text-secondary: #666;
+    --border-color: #ffe9b3;
     --accent-color: #ffd165;
-    --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+    --shadow-sm: 0 2px 8px rgba(255, 193, 7, 0.15);
+    --shadow-md: 0 4px 12px rgba(255, 193, 7, 0.2);
 }
 
 body {
     font-family: var(--font-primary);
-    background-color: var(--bg-color);
+    background: linear-gradient(135deg, #fff9e6 0%, #fff3d4 100%);
     color: var(--text-primary);
-    font-size: 16px;
+    font-size: 15px;
+    padding-top: 48px;
+}
+
+/* Rate Banner */
+.rate-banner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, var(--primary-start, #ffd165) 0%, var(--primary-end, #ffb84d) 100%);
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 12px rgba(255, 193, 7, 0.3);
+    z-index: 10000;
+    transition: background 0.3s ease;
+}
+
+.banner-content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: white;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.banner-content i {
+    font-size: 20px;
+}
+
+.banner-cta {
+    background: white;
+    color: var(--primary-end, #ffb84d);
+    padding: 8px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.banner-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .dashboard-container {
@@ -57,8 +106,12 @@ body {
 }
 
 .sidebar-header h2 {
-    font-size: 1.25rem;
-    font-weight: 600;
+    font-size: 18px;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--primary-start, #ffd165) 0%, var(--primary-end, #ffb84d) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .domain-nav {
@@ -67,13 +120,14 @@ body {
 }
 
 .domain-nav h3 {
-    font-size: 0.75rem;
-    font-weight: 500;
+    font-size: 11px;
+    font-weight: 700;
     color: var(--text-secondary);
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-    padding: 0 0.5rem;
-    margin-bottom: 0.5rem;
+    letter-spacing: 0.1em;
+    padding: 0 0.75rem;
+    margin-bottom: 0.75rem;
+    margin-top: 1rem;
 }
 
 .domain-link {
@@ -123,12 +177,90 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.5rem 2rem;
+    padding: 1.75rem 2rem;
     background-color: var(--sidebar-bg);
     border-bottom: 1px solid var(--border-color);
-    position: sticky;
+    position: relative;
     top: 0;
     z-index: 10;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    position: relative;
+}
+
+.dashboard-title {
+    font-size: 32px;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--primary-start, #ffd165) 0%, var(--primary-end, #ffb84d) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 0;
+    line-height: 1;
+}
+
+.theme-picker-btn {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, var(--primary-start, #ffd165) 0%, var(--primary-end, #ffb84d) 100%);
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(255, 193, 7, 0.25);
+    flex-shrink: 0;
+}
+
+.theme-picker-btn:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 6px 20px rgba(255, 193, 7, 0.35);
+}
+
+.theme-picker-btn i {
+    font-size: 22px;
+    color: white;
+}
+
+.theme-palette {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    background: white;
+    border: 2px solid var(--border-color);
+    border-radius: 25px;
+    padding: 16px;
+    display: flex;
+    gap: 10px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    z-index: 100;
+}
+
+.theme-palette .color-swatch {
+    width: 45px;
+    height: 45px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 3px solid transparent;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.theme-palette .color-swatch:hover {
+    transform: scale(1.15);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.theme-palette .color-swatch.active {
+    border-color: white;
+    box-shadow: 0 0 0 3px var(--text-dark), 0 4px 16px rgba(0, 0, 0, 0.25);
+    transform: scale(1.1);
 }
 
 .search-container {
@@ -155,8 +287,8 @@ body {
 
 #search-input:focus {
     outline: none;
-    border-color: var(--accent-color);
-    box-shadow: 0 0 0 3px rgba(255, 209, 101, 0.4);
+    border-color: var(--primary-start, #ffd165);
+    box-shadow: 0 0 0 3px rgba(var(--primary-rgb, 255, 209, 101), 0.2);
 }
 
 .notes-grid {
@@ -169,19 +301,20 @@ body {
 
 .note-card {
     background-color: var(--card-bg);
-    border-radius: 8px;
-    box-shadow: var(--shadow);
-    border-left: 5px solid var(--accent-color);
-    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm);
+    border: 2px solid var(--border-color);
+    padding: 1.25rem;
     display: flex;
     flex-direction: column;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    position: relative; /* Needed for overlay positioning */
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    position: relative;
 }
 
 .note-card:hover {
     transform: translateY(-3px);
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-md);
+    border-color: var(--primary-start, #ffd165);
 }
 
 .note-card-header {

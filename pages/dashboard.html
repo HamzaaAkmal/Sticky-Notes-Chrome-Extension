@@ -4,10 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sticky Notes Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="dashboard.css">
     <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/3.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css" />
 </head>
 <body>
+    <!-- Persistent Banner -->
+    <div class="rate-banner">
+        <div class="banner-content">
+            <i class="fi fi-rr-star"></i>
+            <span>Enjoying Sticky Notes? Help us grow!</span>
+        </div>
+        <a href="https://chrome.google.com/webstore" target="_blank" class="banner-cta">
+            Rate on Chrome Store <i class="fi fi-rr-arrow-small-right"></i>
+        </a>
+    </div>
+    
     <div class="dashboard-container">
         <aside class="sidebar">
             <div class="sidebar-header">
@@ -26,12 +40,23 @@
         </aside>
         <main class="main-content">
             <header class="main-header">
+                <div class="header-left">
+                    <h1 class="dashboard-title">All Notes</h1>
+                    <button id="theme-picker-btn" class="theme-picker-btn" title="Change theme color">
+                        <i class="fi fi-rr-palette"></i>
+                    </button>
+                    <div class="theme-palette" id="theme-palette" style="display: none;">
+                        <div class="color-swatch" data-color="yellow" style="background: linear-gradient(135deg, #ffd165 0%, #ffb84d 100%);"></div>
+                        <div class="color-swatch" data-color="pink" style="background: linear-gradient(135deg, #ff9b71 0%, #ff7f6e 100%);"></div>
+                        <div class="color-swatch" data-color="blue" style="background: linear-gradient(135deg, #a0d1e8 0%, #7eb5d3 100%);"></div>
+                        <div class="color-swatch" data-color="purple" style="background: linear-gradient(135deg, #d3a0e8 0%, #b77ed3 100%);"></div>
+                        <div class="color-swatch" data-color="green" style="background: linear-gradient(135deg, #a0e8b1 0%, #7ed396 100%);"></div>
+                        <div class="color-swatch" data-color="red" style="background: linear-gradient(135deg, #e8a0a0 0%, #d37e7e 100%);"></div>
+                    </div>
+                </div>
                 <div class="search-container">
                     <i class="fi fi-rr-search"></i>
-                    <input type="text" id="search-input" placeholder="Search all notes...">
-                </div>
-                <div class="header-actions">
-                    <!-- Future actions can go here -->
+                    <input type="text" id="search-input" placeholder="Search notes...">
                 </div>
             </header>
             <section class="notes-grid" id="notes-grid">

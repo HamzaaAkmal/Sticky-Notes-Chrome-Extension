@@ -3,24 +3,231 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Welcome to Sticky Notes!</title>
+    <title>Welcome to Sticky Notes</title>
     <link rel="icon" href="../assets/pin.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/3.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css" />
-    <link rel="stylesheet" href="pages.css" />
+    <style>
+        .rate-banner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, #ffd165 0%, #ffb84d 100%);
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 12px rgba(255, 193, 7, 0.3);
+            z-index: 10000;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .banner-content {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: white;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        .banner-content i {
+            font-size: 20px;
+        }
+        
+        .banner-cta {
+            background: white;
+            color: #ffb84d;
+            padding: 8px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        .banner-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ffd165 0%, #ffb84d 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            padding-top: 80px;
+        }
+        
+        .container {
+            max-width: 900px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 24px;
+            padding: 60px 50px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.6s ease;
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .logo {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 4px 12px rgba(102, 126, 234, 0.4));
+        }
+        
+        h1 {
+            font-size: 42px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+        
+        .subtitle {
+            font-size: 18px;
+            color: #666;
+            font-weight: 400;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+        
+        .feature-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 16px;
+            padding: 32px 24px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(102, 126, 234, 0.2);
+            border-color: #667eea;
+        }
+        
+        .icon-wrapper {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, #ffd165 0%, #ffb84d 100%);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+        
+        .icon-wrapper i {
+            font-size: 32px;
+            color: white;
+        }
+        
+        h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 12px;
+        }
+        
+        p {
+            font-size: 15px;
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        strong {
+            font-weight: 700;
+            color: #ffb84d;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #ffd165 0%, #ffb84d 100%);
+            color: white;
+            padding: 16px 48px;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 700;
+            text-decoration: none;
+            margin-top: 40px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(255, 193, 7, 0.3);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 193, 7, 0.4);
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid #e9ecef;
+        }
+        
+        .footer p {
+            font-size: 16px;
+            color: #666;
+            font-weight: 600;
+        }
+    </style>
 </head>
 <body>
+    <!-- Persistent Banner -->
+    <div class="rate-banner">
+        <div class="banner-content">
+            <i class="fi fi-rr-star"></i>
+            <span>Love Sticky Notes? Support us!</span>
+        </div>
+        <a href="https://chrome.google.com/webstore" target="_blank" class="banner-cta">
+            Rate Us <i class="fi fi-rr-arrow-small-right"></i>
+        </a>
+    </div>
+    
     <div class="container">
         <div class="header">
             <img src="../assets/pin.png" alt="Sticky Notes Icon" class="logo">
-            <h1>Welcome to Sticky Notes!</h1>
-            <p>Your extension is installed. Here are a few tips to get started.</p>
-        </div>
-
-        <div class="pin-instruction">
-            <h2>1. Pin the Extension</h2>
-            <p>
-                For easy access, click the puzzle icon <i class="fi fi-rr-puzzle-piece"></i> in your toolbar and pin <strong>Sticky Notes</strong>.
-            </p>
+            <h1>Welcome to Sticky Notes</h1>
+            <p class="subtitle">Your notes, everywhere you browse</p>
         </div>
 
         <div class="features-grid">
@@ -28,37 +235,28 @@
                 <div class="icon-wrapper">
                     <i class="fi fi-rr-keyboard"></i>
                 </div>
-                <h3>Create with a Shortcut</h3>
-                <p>Press <strong>Ctrl + Q</strong> (or <strong>⌘ + Q</strong>) on any page.</p>
+                <h3>Quick Create</h3>
+                <p>Press <strong>Ctrl + Q</strong> on any page to instantly create a note</p>
             </div>
             <div class="feature-card">
                 <div class="icon-wrapper">
-                    <i class="fi fi-rr-mouse"></i>
+                    <i class="fi fi-rr-cloud"></i>
                 </div>
-                <h3>Create with Right-Click</h3>
-                <p>Right-click on a page and select "Create Sticky Note".</p>
+                <h3>Cloud Sync</h3>
+                <p>Your notes sync automatically across all your devices</p>
             </div>
             <div class="feature-card">
                 <div class="icon-wrapper">
-                    <i class="fi fi-rr-apps"></i>
+                    <i class="fi fi-rr-dashboard"></i>
                 </div>
-                <h3>View All Notes</h3>
-                <p>Click the extension icon to see all your notes in one place.</p>
+                <h3>Dashboard View</h3>
+                <p>Manage all your notes in one beautiful dashboard</p>
             </div>
         </div>
 
         <div class="footer">
-            <p>Happy note-taking! 🎉</p>
+            <p>🎉 You're all set! Start creating notes anywhere</p>
         </div>
     </div>
-
-    <!-- Confetti Trigger Button -->
-    <button id="confetti-trigger" title="More confetti!">
-        <i class="fi fi-rr-sparkles"></i>
-    </button>
-
-    <!-- JavaScript for confetti -->
-    <script src="confetti.js"></script>
-    <script src="pages.js"></script>
 </body>
 </html>

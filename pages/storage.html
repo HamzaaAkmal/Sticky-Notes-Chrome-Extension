@@ -4,11 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cloud Storage - Sticky Notes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="dashboard.css">
     <link rel="stylesheet" href="storage.css">
     <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/3.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css" />
 </head>
 <body>
+    <!-- Persistent Banner -->
+    <div class="rate-banner">
+        <div class="banner-content">
+            <i class="fi fi-rr-star"></i>
+            <span>Enjoying Sticky Notes? Help us grow!</span>
+        </div>
+        <a href="https://chrome.google.com/webstore" target="_blank" class="banner-cta">
+            Rate on Chrome Store <i class="fi fi-rr-arrow-small-right"></i>
+        </a>
+    </div>
+    
     <div class="dashboard-container">
         <aside class="sidebar">
             <div class="sidebar-header">
@@ -17,8 +31,8 @@
             </div>
             <nav class="domain-nav">
                 <a href="dashboard.html" class="domain-link">
-                    <i class="fi fi-rr-apps"></i>
-                    <span>All Notes</span>
+                    <i class="fi fi-rr-dashboard"></i>
+                    <span>Dashboard</span>
                 </a>
             </nav>
             <div class="sidebar-footer">
@@ -30,20 +44,20 @@
         </aside>
         <main class="main-content">
             <header class="main-header">
-                <h1>Cloud Storage</h1>
-                <a href="diagnostic.html" class="diagnostic-link" style="margin-left: auto; padding: 8px 16px; background: #3b82f6; color: white; text-decoration: none; border-radius: 6px; font-size: 14px;">
-                    🔧 Run Diagnostics
-                </a>
+                <h1 class="dashboard-title">Cloud Storage</h1>
             </header>
             <section class="storage-content">
+                <!-- Account Card -->
                 <div class="storage-card">
                     <div class="card-header">
-                        <i class="fi fi-rr-user"></i>
+                        <div class="icon-wrapper">
+                            <i class="fi fi-rr-user"></i>
+                        </div>
                         <h2>Account</h2>
                     </div>
                     <div class="account-info" id="account-info">
                         <div class="not-logged-in">
-                            <p>Sign in with your Google account to sync your notes across devices.</p>
+                            <p>Sign in with Google to sync your notes across all devices</p>
                             <button id="sign-in-btn" class="btn btn-primary">
                                 <i class="fi fi-rr-sign-in-alt"></i>
                                 Sign in with Google
@@ -65,9 +79,12 @@
                     </div>
                 </div>
 
+                <!-- Sync Status Card -->
                 <div class="storage-card">
                     <div class="card-header">
-                        <i class="fi fi-rr-cloud-upload"></i>
+                        <div class="icon-wrapper">
+                            <i class="fi fi-rr-refresh"></i>
+                        </div>
                         <h2>Sync Status</h2>
                     </div>
                     <div class="sync-info">
@@ -80,7 +97,7 @@
                         </div>
                         <div class="sync-actions">
                             <button id="manual-sync-btn" class="btn btn-primary" disabled>
-                                <i class="fi fi-rr-refresh"></i>
+                                <i class="fi fi-rr-cloud-upload"></i>
                                 Sync Now
                             </button>
                             <button id="auto-sync-toggle" class="btn btn-secondary" disabled>
@@ -91,38 +108,64 @@
                     </div>
                 </div>
 
+                <!-- Storage Stats Card -->
                 <div class="storage-card">
                     <div class="card-header">
-                        <i class="fi fi-rr-stats"></i>
-                        <h2>Storage Info</h2>
+                        <div class="icon-wrapper">
+                            <i class="fi fi-rr-chart-pie"></i>
+                        </div>
+                        <h2>Storage Statistics</h2>
                     </div>
                     <div class="storage-stats">
                         <div class="stat-item">
-                            <span class="stat-label">Total Notes:</span>
-                            <span class="stat-value" id="total-notes">0</span>
+                            <div class="stat-icon">
+                                <i class="fi fi-rr-file"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-label">Total Notes</span>
+                                <span class="stat-value" id="total-notes">0</span>
+                            </div>
                         </div>
                         <div class="stat-item">
-                            <span class="stat-label">Local Notes:</span>
-                            <span class="stat-value" id="local-notes">0</span>
+                            <div class="stat-icon">
+                                <i class="fi fi-rr-laptop"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-label">Local Notes</span>
+                                <span class="stat-value" id="local-notes">0</span>
+                            </div>
                         </div>
                         <div class="stat-item">
-                            <span class="stat-label">Cloud Notes:</span>
-                            <span class="stat-value" id="cloud-notes">0</span>
+                            <div class="stat-icon">
+                                <i class="fi fi-rr-cloud"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-label">Cloud Notes</span>
+                                <span class="stat-value" id="cloud-notes">0</span>
+                            </div>
                         </div>
                         <div class="stat-item">
-                            <span class="stat-label">Last Updated:</span>
-                            <span class="stat-value" id="last-updated">Never</span>
+                            <div class="stat-icon">
+                                <i class="fi fi-rr-clock"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-label">Last Updated</span>
+                                <span class="stat-value" id="last-updated">Never</span>
+                            </div>
                         </div>
                     </div>
                 </div>
 
+                <!-- Danger Zone -->
                 <div class="storage-card danger-zone">
                     <div class="card-header">
-                        <i class="fi fi-rr-exclamation"></i>
+                        <div class="icon-wrapper danger">
+                            <i class="fi fi-rr-exclamation"></i>
+                        </div>
                         <h2>Danger Zone</h2>
                     </div>
                     <div class="danger-actions">
-                        <p>These actions are permanent and cannot be undone.</p>
+                        <p>Permanently delete all cloud data. This action cannot be undone.</p>
                         <button id="delete-cloud-btn" class="btn btn-danger" disabled>
                             <i class="fi fi-rr-trash"></i>
                             Delete All Cloud Data

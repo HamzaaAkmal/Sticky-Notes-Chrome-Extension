@@ -4,6 +4,106 @@ document.addEventListener('DOMContentLoaded', () => {
   let allNotesData = {}; // To cache all notes from storage
   let collapsedDomainsState = []; // To cache the collapsed state
 
+  // Theme colors configuration
+  const THEME_COLORS = {
+    yellow: { start: '#ffd165', end: '#ffb84d', bg: '#fff9e6', bgEnd: '#fff3d4', border: '#ffe9b3' },
+    pink: { start: '#ff9b71', end: '#ff7f6e', bg: '#ffe9e6', bgEnd: '#ffd9d4', border: '#ffb3a8' },
+    blue: { start: '#a0d1e8', end: '#7eb5d3', bg: '#e6f4f9', bgEnd: '#d4ebf4', border: '#b3dce9' },
+    purple: { start: '#d3a0e8', end: '#b77ed3', bg: '#f4e6f9', bgEnd: '#ebd4f4', border: '#dcb3e9' },
+    green: { start: '#a0e8b1', end: '#7ed396', bg: '#e6f9eb', bgEnd: '#d4f4dd', border: '#b3e9c4' },
+    red: { start: '#e8a0a0', end: '#d37e7e', bg: '#f9e6e6', bgEnd: '#f4d4d4', border: '#e9b3b3' }
+  };
+
+  // Load saved theme or default to yellow
+  function loadTheme() {
+    chrome.storage.local.get(['dashboardTheme'], (result) => {
+      const theme = result.dashboardTheme || 'yellow';
+      applyTheme(theme);
+    });
+  }
+
+  // Apply theme to popup
+  function applyTheme(colorKey) {
+    const colors = THEME_COLORS[colorKey];
+    const root = document.documentElement;
+    
+    root.style.setProperty('--primary-start', colors.start);
+    root.style.setProperty('--primary-end', colors.end);
+    root.style.setProperty('--bg-color', colors.bg);
+    root.style.setProperty('--border-color', colors.border);
+    
+    // Update sticky box header background
+    const stickyBox = document.querySelector('.sticky-box');
+    if (stickyBox) {
+      stickyBox.style.background = `linear-gradient(135deg, ${colors.bg} 0%, ${colors.bgEnd} 100%)`;
+    }
+    
+    // Update banner
+    const banner = document.querySelector('.rate-banner');
+    if (banner) {
+      banner.style.background = `linear-gradient(135deg, ${colors.start} 0%, ${colors.end} 100%)`;
+    }
+    
+    // Update banner CTA color
+    const bannerCta = document.querySelector('.banner-cta');
+    if (bannerCta) {
+      bannerCta.style.color = colors.end;
+    }
+    
+    // Update theme picker button border
+    const themeBtn = document.getElementById('popup-theme-picker-btn');
+    if (themeBtn) {
+      themeBtn.style.borderColor = colors.border;
+      themeBtn.querySelector('i').style.color = colors.start;
+    }
+    
+    // Update search and dashboard button borders
+    const searchContainer = document.querySelector('.search-container');
+    const dashboardBtn = document.querySelector('.open-dashboard-btn');
+    if (searchContainer) searchContainer.style.borderColor = colors.border;
+    if (dashboardBtn) dashboardBtn.style.borderColor = colors.border;
+    
+    // Save theme preference
+    chrome.storage.local.set({ dashboardTheme: colorKey });
+    
+    // Update active swatch
+    document.querySelectorAll('.popup-color-swatch').forEach(swatch => {
+      swatch.classList.toggle('active', swatch.dataset.color === colorKey);
+    });
+  }
+
+  // Theme picker functionality
+  function initThemePicker() {
+    const themeBtn = document.getElementById('popup-theme-picker-btn');
+    const themePalette = document.getElementById('popup-theme-palette');
+    
+    if (!themeBtn || !themePalette) return;
+    
+    themeBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      themePalette.style.display = themePalette.style.display === 'none' ? 'block' : 'none';
+    });
+    
+    document.querySelectorAll('.popup-color-swatch').forEach(swatch => {
+      swatch.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const colorKey = swatch.dataset.color;
+        applyTheme(colorKey);
+        themePalette.style.display = 'none';
+      });
+    });
+    
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.popup-theme-picker-btn') && !e.target.closest('.popup-theme-palette')) {
+        themePalette.style.display = 'none';
+      }
+    });
+  }
+
+  // Initialize theme
+  loadTheme();
+  initThemePicker();
+
   // Mock data for development when chrome.storage is not available
   const mockNotesData = {
     'https://developer.chrome.com/docs/extensions': [
