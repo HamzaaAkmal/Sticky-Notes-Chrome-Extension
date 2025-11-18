@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Sticky Notes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/3.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css">
+    <link rel="stylesheet" href="dashboard.css">
+    <style>
+        body {
+            padding-bottom: 60px;
+        }
+
+        .privacy-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .privacy-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .privacy-header h1 {
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 10px;
+        }
+
+        .privacy-header .last-updated {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        .privacy-section {
+            background: var(--card-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .privacy-section h2 {
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .privacy-section h2 i {
+            font-size: 28px;
+            background: var(--yellow-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .privacy-section h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .privacy-section p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 15px;
+            font-size: 15px;
+        }
+
+        .privacy-section ul {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+
+        .privacy-section li {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 10px;
+            font-size: 15px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #fff9e6 0%, #ffe9b3 100%);
+            border-left: 4px solid var(--accent-color);
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+
+        .highlight-box p {
+            margin: 0;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .contact-box {
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(135deg, #fff9e6 0%, #ffe9b3 100%);
+            border-radius: 20px;
+            margin-top: 40px;
+            border: 2px solid var(--border-color);
+        }
+
+        .contact-box h3 {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 15px;
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: white;
+            color: var(--text-primary);
+            padding: 12px 24px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+        }
+
+        .contact-link:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .contact-link i {
+            font-size: 20px;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--yellow-gradient);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+            margin-bottom: 30px;
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(255, 193, 7, 0.4);
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            border-top: 2px solid var(--border-color);
+            padding: 15px 20px;
+            text-align: center;
+            z-index: 1000;
+        }
+
+        .footer-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 13px;
+        }
+
+        .app-version {
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        .footer-divider {
+            color: var(--text-secondary);
+        }
+
+        .powered-by {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .powered-by:hover {
+            color: var(--text-primary);
+        }
+
+        .powered-by strong {
+            background: var(--yellow-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+</head>
+<body>
+    <!-- Persistent Banner -->
+    <div class="rate-banner">
+        <div class="banner-content">
+            <i class="fi fi-rr-star"></i>
+            <span>Made with ❤️ for you! Show some love ⭐</span>
+        </div>
+        <a href="https://chrome.google.com/webstore/detail/apfbinofieeeemagkfdobkadnflgoeog" target="_blank" class="banner-cta">
+            Rate on Chrome Store <i class="fi fi-rr-arrow-small-right"></i>
+        </a>
+    </div>
+
+    <div class="privacy-container">
+        <a href="dashboard.html" class="back-button">
+            <i class="fi fi-rr-arrow-small-left"></i>
+            Back to Dashboard
+        </a>
+
+        <div class="privacy-header">
+            <h1>Privacy Policy</h1>
+            <p class="last-updated">Last Updated: November 18, 2025</p>
+        </div>
+
+        <div class="privacy-section">
+            <h2><i class="fi fi-rr-shield-check"></i>Overview</h2>
+            <p>Sticky Notes - Easy Web Notes & Quick Reminders ("the Extension") respects your privacy. This policy explains what data we collect and how we use it.</p>
+        </div>
+
+        <div class="privacy-section">
+            <h2><i class="fi fi-rr-database"></i>Data Collection</h2>
+            
+            <h3>What We Collect</h3>
+            <ul>
+                <li><strong>Sticky Notes Content:</strong> The text content of notes you create on websites</li>
+                <li><strong>Note Metadata:</strong> Website URLs where notes are saved, note positions on the page, note colors, and timestamps</li>
+                <li><strong>User Preferences:</strong> Theme color selection, dashboard settings, and display preferences</li>
+                <li><strong>Authentication Data:</strong> If you choose to sign in with Google OAuth, we store your Google user ID, email address, and profile information for cloud sync functionality</li>
+                <li><strong>Website Content:</strong> The URLs and page titles where you create notes (necessary for organizing and displaying notes by website)</li>
+            </ul>
+
+            <h3>What We DON'T Collect</h3>
+            <div class="highlight-box">
+                <p>✓ We do NOT collect your complete browsing history - only URLs where you actively create notes<br>
+                ✓ We do NOT track your activity, clicks, scrolling, or keystrokes on websites<br>
+                ✓ We do NOT collect personally identifiable information beyond what's needed for Google login (optional)<br>
+                ✓ We do NOT collect financial data, payment information, or health information<br>
+                ✓ We do NOT use analytics, tracking pixels, or third-party cookies<br>
+                ✓ We do NOT collect location data or device information<br>
+                ✓ We do NOT read or collect data from other browser tabs or windows</p>
+            </div>
+        </div>
+
+        <div class="privacy-section">
+            <h2><i class="fi fi-rr-settings"></i>How We Use Your Data</h2>
+            
+            <h3>Local Storage (Default)</h3>
+            <p>By default, all notes are stored locally in your browser using Chrome's storage.sync and storage.local APIs. This data:</p>
+            <ul>
+                <li>Stays on your device and never leaves unless you enable cloud sync</li>
+                <li>Is automatically synced across your Chrome browsers when using the same Google account (Chrome's native sync)</li>
+                <li>Can be deleted anytime by clearing browser data or uninstalling the extension</li>
+            </ul>
+
+            <h3>Cloud Sync (Optional - Requires Login)</h3>
+            <p>If you choose to sign in with Google:</p>
+            <ul>
+                <li>Your notes are backed up to our secure cloud storage server (pay.agent0s.dev)</li>
+                <li>All data transmission uses HTTPS encryption</li>
+                <li>Your Google OAuth token is used only for authentication</li>
+                <li>We store your email and user ID to associate notes with your account</li>
+                <li>You can disable cloud sync anytime and revert to local-only storage</li>
+                <li>You can delete all cloud data from the Cloud Storage settings page</li>
+            </ul>
+
+            <h3>Extension Functionality</h3>
+            <p>We use collected data solely to:</p>
+            <ul>
+                <li>Display your sticky notes on the correct websites</li>
+                <li>Save and restore note positions, content, and styling</li>
+                <li>Organize notes by website domain in the dashboard</li>
+                <li>Provide search and filtering capabilities</li>
+                <li>Enable keyboard shortcuts (Ctrl+Q) to create notes</li>
+                <li>Support PDF note-taking for local PDF files</li>
+                <li>Remember your theme color preferences</li>
+            </ul>
+        </div>
+
+        <div class="privacy-section">
+            <h2><i class="fi fi-rr-lock"></i>Data Sharing & Third Parties</h2>
+            <div class="highlight-box">
+                <p><strong>WE DO NOT:</strong><br><br>
+                ✓ Sell or transfer your data to third parties for ANY purpose<br>
+                ✓ Share your notes content with advertisers or data brokers<br>
+                ✓ Use your data for advertising, marketing, or profiling<br>
+                ✓ Transfer data for purposes unrelated to sticky notes functionality<br>
+                ✓ Use or transfer data to determine creditworthiness or for lending purposes<br>
+                ✓ Share your data with anyone except as required by law<br><br>
+                <strong>Your notes are private and stay private.</strong></p>
+            </div>
+        </div>
+
+        <div class="privacy-section">
+            <h2><i class="fi fi-rr-shield-check"></i>Data Security & Encryption</h2>
+            <ul>
+                <li>All cloud data transmission uses HTTPS/TLS encryption</li>
+                <li>Cloud-synced notes are stored on secure servers with access controls</li>
+                <li>Google OAuth tokens are handled securely and never exposed</li>
+                <li>Local data is protected by Chrome's built-in security mechanisms</li>
+                <li>We implement industry-standard security practices</li>
+                <li>No sensitive data is transmitted in plain text</li>
+            </ul>
+        </div>
+
+        <div class="privacy-section">
+            <h2><i class="fi fi-rr-user"></i>Your Rights & Data Control</h2>
+            <p>You have complete control over your data:</p>
+            <ul>
+                <li><strong>Access:</strong> View all your notes through the extension dashboard</li>
+                <li><strong>Export:</strong> Copy or export notes from the dashboard</li>
+                <li><strong>Delete:</strong> Delete individual notes or all notes anytime</li>
+                <li><strong>Cloud Control:</strong> Enable or disable cloud sync at any time</li>
+                <li><strong>Account Deletion:</strong> Delete your cloud account and all associated data from Cloud Storage settings</li>
+                <li><strong>Uninstall:</strong> Uninstalling the extension removes all local data immediately</li>
+                <li><strong>Opt-out:</strong> You can use the extension entirely offline without any login</li>
+            </ul>
+            <p><strong>GDPR Rights:</strong> If you're in the EU, you have rights to data portability, rectification, and erasure. Contact us to exercise these rights.</p>
+        </div>
+
+        <div class="privacy-section">
+            <h2><i class="fi fi-rr-apps"></i>Third-Party Services & External Resources</h2>
+            <p>The extension uses the following third-party services:</p>
+            <ul>
+                <li><strong>Google OAuth & Identity API:</strong> For optional user authentication and login (Google's Privacy Policy applies)</li>
+                <li><strong>Chrome Storage API:</strong> For local and sync storage of notes (Google's Privacy Policy applies)</li>
+                <li><strong>Google Fonts:</strong> Poppins font family loaded from fonts.googleapis.com and fonts.gstatic.com</li>
+                <li><strong>Flaticon UI Icons:</strong> Icon assets loaded from cdn-uicons.flaticon.com for the user interface</li>
+                <li><strong>Cloud Storage Server:</strong> pay.agent0s.dev - our secure backend for optional cloud sync (HTTPS encrypted)</li>
+            </ul>
+            <p><strong>Important:</strong> We do not share your note content or personal data with any third parties for advertising, analytics, or marketing purposes.</p>
+        </div>
+
+        <div class="privacy-section">
+            <h2><i class="fi fi-rr-globe"></i>Permissions & Host Access</h2>
+            <p>The extension requests the following Chrome permissions:</p>
+            <ul>
+                <li><strong>storage:</strong> To save notes locally and sync across your Chrome browsers</li>
+                <li><strong>activeTab:</strong> To inject sticky notes into the currently active webpage only</li>
+                <li><strong>scripting:</strong> To dynamically add note-taking functionality to web pages</li>
+                <li><strong>contextMenus:</strong> To add "Create Sticky Note" to right-click menu</li>
+                <li><strong>identity:</strong> For optional Google OAuth login for cloud sync</li>
+                <li><strong>&lt;all_urls&gt; (Host Permission):</strong> Required because sticky notes must work on ANY website you visit - this is the core functionality. We do NOT use this to track or collect data from websites you don't create notes on.</li>
+            </ul>
+        </div>
+
+        <div class="privacy-section">
+            <h2><i class="fi fi-rr-child-head"></i>Children's Privacy (COPPA Compliance)</h2>
+            <p>This extension does not knowingly collect personal information from children under 13 years of age. If you are a parent or guardian and believe your child has provided us with personal information, please contact us immediately, and we will delete such information.</p>
+        </div>
+
+        <div class="privacy-section">
+            <h2><i class="fi fi-rr-code"></i>Remote Code & External Scripts</h2>
+            <p><strong>We do NOT use remote code.</strong> All JavaScript and functionality is included in the extension package. We do not:</p>
+            <ul>
+                <li>Load external JavaScript files from CDNs or third-party servers</li>
+                <li>Use eval() or similar functions to execute remote code</li>
+                <li>Include WebAssembly modules from external sources</li>
+                <li>Reference external files in script tags (except approved resources like fonts and icons)</li>
+            </ul>
+            <p>The only external resources loaded are:</p>
+            <ul>
+                <li>Google Fonts (Poppins font family) - CSS and font files only, no scripts</li>
+                <li>Flaticon icons - CSS and icon assets only, no scripts</li>
+            </ul>
+        </div>
+
+        <div class="privacy-section">
+            <h2><i class="fi fi-rr-refresh"></i>Changes to This Policy</h2>
+            <p>We may update this privacy policy from time to time to reflect changes in our practices or for legal compliance. When we make changes:</p>
+            <ul>
+                <li>The "Last Updated" date at the top will be changed</li>
+                <li>Significant changes will be communicated through the extension</li>
+                <li>Your continued use of the extension constitutes acceptance of the updated policy</li>
+                <li>You can always review the latest version at this URL</li>
+            </ul>
+        </div>
+
+        <div class="privacy-section">
+            <h2><i class="fi fi-rr-diploma"></i>Legal Compliance</h2>
+            <p>This extension and privacy policy comply with:</p>
+            <ul>
+                <li><strong>Chrome Web Store Developer Program Policies</strong></li>
+                <li><strong>General Data Protection Regulation (GDPR)</strong> - EU data protection law</li>
+                <li><strong>California Consumer Privacy Act (CCPA)</strong> - California privacy rights</li>
+                <li><strong>Children's Online Privacy Protection Act (COPPA)</strong> - Children's privacy protection</li>
+                <li><strong>Chrome Extension Manifest V3 requirements</strong></li>
+            </ul>
+            <p>We are committed to protecting your privacy and complying with all applicable data protection laws.</p>
+        </div>
+
+        <div class="contact-box">
+            <h3>Questions or Concerns?</h3>
+            <p>For privacy concerns or questions, contact us:</p>
+            <div class="contact-links">
+                <a href="https://github.com/HamzaaAkmal" target="_blank" class="contact-link">
+                    <i class="fi fi-brands-github"></i>
+                    GitHub
+                </a>
+                <a href="https://linkedin.com/in/hamzaaakmal" target="_blank" class="contact-link">
+                    <i class="fi fi-brands-linkedin"></i>
+                    LinkedIn
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="footer-content">
+            <span class="app-version">v1.0</span>
+            <span class="footer-divider">•</span>
+            <a href="https://linkedin.com/in/hamzaaakmal" target="_blank" class="powered-by">
+                Powered by <strong>Downlabs</strong>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

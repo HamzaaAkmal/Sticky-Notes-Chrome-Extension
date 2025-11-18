@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "Sticky Notes - Easy Web Notes & Quick Reminders",
-  "description": "Add sticky notes to any website instantly! Free forever, simple & easy to use. Save notes, set reminders & organize ideas anywhere. Never forget again!",
-  "version": "0.7",
+  "description": "Add sticky notes to any website! Free forever, simple & easy. Save notes, set reminders & organize ideas. Never forget!",
+  "version": "1.0",
   "icons": {
     "128": "assets/pin.png"
   },
