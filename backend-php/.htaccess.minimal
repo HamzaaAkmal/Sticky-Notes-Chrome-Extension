@@ -1,0 +1,17 @@
+# Minimal .htaccess - Use this if the main one causes errors
+
+# Try to enable CORS
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "*"
+    Header set Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS"
+    Header set Access-Control-Allow-Headers "Content-Type, Authorization"
+</IfModule>
+
+# Optional: Rewrite rules (disable if causing issues)
+# <IfModule mod_rewrite.c>
+#     RewriteEngine On
+#     RewriteRule ^api/auth/?$ auth.php [L]
+#     RewriteRule ^api/sync/?$ sync.php [L]
+#     RewriteRule ^api/get_notes/?$ get_notes.php [L]
+#     RewriteRule ^api/update_notes/?$ update_notes.php [L]
+# </IfModule>

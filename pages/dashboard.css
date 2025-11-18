@@ -1,0 +1,506 @@
+/* General Reset & Font Setup */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: "Inter", sans-serif;
+    src: url("../font/Inter.ttc") format("truetype");
+}
+
+:root {
+    --font-primary: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --bg-color: #f9fafb;
+    --sidebar-bg: #ffffff;
+    --card-bg: #ffffff;
+    --text-primary: #1f2937;
+    --text-secondary: #6b7280;
+    --border-color: #e5e7eb;
+    --accent-color: #ffd165;
+    --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: var(--font-primary);
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    font-size: 16px;
+}
+
+.dashboard-container {
+    display: flex;
+    height: 100vh;
+}
+
+/* --- Sidebar --- */
+.sidebar {
+    width: 260px;
+    background-color: var(--sidebar-bg);
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+}
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.sidebar-header .logo {
+    width: 32px;
+    height: 32px;
+    margin-right: 0.75rem;
+}
+
+.sidebar-header h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.domain-nav {
+    overflow-y: auto;
+    flex: 1;
+}
+
+.domain-nav h3 {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.domain-link {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    border-radius: 6px;
+    text-decoration: none;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+    transition: background-color 0.2s ease;
+    cursor: pointer;
+}
+
+.domain-link:hover {
+    background-color: var(--bg-color);
+}
+
+.domain-link.active {
+    background-color: var(--accent-color);
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.domain-link .favicon {
+    width: 16px;
+    height: 16px;
+    margin-right: 0.75rem;
+}
+
+.domain-link span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 0.9rem;
+}
+
+/* --- Main Content --- */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    background-color: var(--sidebar-bg);
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.search-container .fi-rr-search {
+    position: absolute;
+    left: 12px;
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+#search-input {
+    width: 320px;
+    padding: 0.6rem 1rem 0.6rem 2.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+#search-input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(255, 209, 101, 0.4);
+}
+
+.notes-grid {
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    align-content: flex-start;
+}
+
+.note-card {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    border-left: 5px solid var(--accent-color);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    position: relative; /* Needed for overlay positioning */
+}
+
+.note-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+}
+
+.note-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.75rem;
+}
+
+.note-card-title {
+    font-size: 1rem;
+    font-weight: 600;
+    word-break: break-word;
+    margin-right: 0.5rem;
+}
+
+.note-card-content-wrapper {
+    position: relative;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.note-card-content {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    overflow: hidden;
+    word-break: break-word;
+    flex-grow: 1;
+    max-height: 150px;
+    position: relative;
+    transition: max-height 0.3s ease;
+}
+
+.note-card-footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 1rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.note-action-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-secondary);
+    padding: 0.25rem;
+    margin-left: 0.5rem;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.note-action-btn:hover {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+}
+
+.note-action-btn i {
+    font-size: 1rem;
+}
+
+.note-action-btn.delete-btn:hover {
+    background-color: #fee2e2;
+    color: #dc2626;
+}
+
+.no-notes-message {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: var(--text-secondary);
+    padding: 4rem 0;
+    font-size: 1.1rem;
+}
+
+/* --- View More Styles --- */
+.note-card.is-long .note-card-content::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), var(--card-bg) 80%);
+    pointer-events: none;
+}
+
+.note-card.is-expanded .note-card-content {
+    max-height: 1000px;
+}
+
+.note-card.is-expanded .note-card-content::after {
+    display: none;
+}
+
+.view-more-container {
+    display: none;
+    text-align: center;
+    margin-top: -25px;
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 2;
+}
+
+.note-card.is-long:not(.is-expanded) .view-more-container {
+    display: block;
+}
+
+.view-more-btn {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 4px 12px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    color: var(--text-primary);
+    display: inline-flex;
+    align-items: center;
+}
+
+.view-more-btn:hover {
+    background-color: var(--bg-color);
+}
+
+.view-more-btn i {
+    font-size: 1.1rem;
+    margin-right: 4px;
+    line-height: 1;
+}
+
+/* --- Editing Styles --- */
+.note-card.editing .note-card-content {
+    padding-bottom: 40px; /* Make space for the toolbar */
+    max-height: 1000px; /* Override max-height when editing */
+}
+
+.note-card.editing .note-card-title.editing {
+    outline: 2px solid var(--accent-color);
+    border-radius: 4px;
+    padding: 0.25rem 0.5rem;
+    margin: -0.25rem -0.5rem; /* Offset padding to maintain layout */
+    background-color: #fff;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.note-card.editing .note-card-content::after,
+.note-card.editing .view-more-container {
+    display: none; /* Hide view more elements when editing */
+}
+
+.note-card-content[contenteditable="true"] {
+    outline: 2px solid var(--accent-color);
+    border-radius: 4px;
+    padding: 0.5rem;
+    margin: -0.5rem; /* Offset padding */
+    background-color: #fff;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.05);
+    overflow-y: auto;
+}
+
+.note-card-toolbar {
+    display: none; /* Hidden by default */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #f3f4f6; /* Light gray, fits the theme */
+    border-top: 1px solid var(--border-color);
+    align-items: center;
+    padding: 4px 8px;
+    border-radius: 0 0 6px 6px; /* Match card rounding */
+}
+
+.toolbar-btn {
+    background: transparent;
+    border: 1px solid transparent;
+    cursor: pointer;
+    padding: 4px;
+    margin: 0 2px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.toolbar-btn:hover {
+    background-color: #e5e7eb; /* Slightly darker gray on hover */
+    border-color: #d1d5db;
+}
+
+.toolbar-btn img {
+    width: 16px;
+    height: 16px;
+}
+
+.note-action-btn.edit-btn:hover {
+    background-color: #e0f2fe; /* light blue */
+    color: #0284c7;
+}
+
+.note-action-btn.save-btn {
+    display: none;
+}
+.note-action-btn.save-btn:hover {
+    background-color: #dcfce7; /* light green */
+    color: #16a34a;
+}
+
+.note-action-btn.cancel-btn {
+    display: none;
+}
+.note-action-btn.cancel-btn:hover {
+    background-color: #fee2e2; /* light red */
+    color: #dc2626;
+}
+
+.note-card.editing .visit-btn,
+.note-card.editing .copy-btn,
+.note-card.editing .delete-btn,
+.note-card.editing .edit-btn {
+    display: none;
+}
+
+.note-card.editing .save-btn,
+.note-card.editing .cancel-btn {
+    display: inline-flex;
+}
+
+/* --- Custom Delete Confirmation --- */
+.dashboard-delete-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(31, 41, 55, 0.75); /* text-primary with alpha */
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    box-sizing: border-box;
+    border-radius: 8px; /* Match note-card's radius */
+}
+
+.dashboard-delete-modal p {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.dashboard-modal-buttons button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    margin: 0 0.25rem;
+    font-size: 0.9rem;
+    transition: background-color 0.2s ease;
+}
+
+.dashboard-modal-buttons .confirm-delete {
+    background-color: #ef4444; /* red-500 */
+    color: white;
+}
+
+.dashboard-modal-buttons .confirm-delete:hover {
+    background-color: #dc2626; /* red-600 */
+}
+
+.dashboard-modal-buttons .cancel-delete {
+    background-color: #6b7280; /* gray-500 */
+    color: white;
+}
+
+.dashboard-modal-buttons .cancel-delete:hover {
+    background-color: #4b5563; /* gray-600 */
+}
+
+/* --- Sidebar Footer --- */
+.sidebar-footer {
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.storage-link {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 0.5rem;
+    border-radius: 6px;
+    text-decoration: none;
+    color: var(--text-primary);
+    transition: background-color 0.2s ease;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.storage-link:hover {
+    background-color: var(--bg-color);
+}
+
+.storage-link i {
+    font-size: 1.1rem;
+    margin-right: 0.75rem;
+    color: #3b82f6;
+}
+
+.storage-link span {
+    font-size: 0.9rem;
+}

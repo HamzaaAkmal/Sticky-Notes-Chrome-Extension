@@ -1,0 +1,178 @@
+/* General Reset & Font Setup */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: "Inter", sans-serif;
+    src: url("../font/Inter.ttc") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root {
+    --font-primary: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --color-background: #f7f7f7;
+    --color-text: #333;
+    --color-text-light: #666;
+    --color-primary: #ffd165; /* Same as sticky note header */
+    --color-card-bg: #ffffff;
+    --shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+body {
+    font-family: var(--font-primary);
+    background-color: var(--color-background);
+    color: var(--color-text);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+/* Main Container */
+.container {
+    background-color: var(--color-card-bg);
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    max-width: 800px;
+    width: 100%;
+    padding: 3rem;
+    text-align: center;
+}
+
+/* Header */
+.header {
+    margin-bottom: 2.5rem;
+}
+
+.header .logo {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 1rem;
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.header p {
+    font-size: 1.1rem;
+    color: var(--color-text-light);
+}
+
+/* Pinning Instruction */
+.pin-instruction {
+    background-color: #fff9e6;
+    border: 1px solid #ffeec2;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2.5rem;
+    text-align: left;
+}
+
+.pin-instruction h2 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.pin-instruction p {
+    font-size: 1rem;
+    color: var(--color-text-light);
+    line-height: 1.6;
+}
+
+.pin-instruction i {
+    color: var(--color-primary);
+    vertical-align: middle;
+    font-size: 1.2rem;
+}
+
+/* Features Grid */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.feature-card {
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.icon-wrapper {
+    background-color: var(--color-primary);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.icon-wrapper i {
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.feature-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.feature-card p {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    line-height: 1.5;
+}
+
+/* Footer */
+.footer {
+    font-size: 1.1rem;
+    color: var(--color-text-light);
+}
+
+/* Confetti Trigger Button */
+#confetti-trigger {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 56px;
+    height: 56px;
+    background-color: var(--color-primary);
+    color: #333;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    z-index: 1000;
+}
+
+#confetti-trigger:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+#confetti-trigger i {
+    font-size: 1.5rem;
+    line-height: 1; /* Fix for icon alignment */
+}

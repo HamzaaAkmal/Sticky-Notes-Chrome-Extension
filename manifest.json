@@ -1,0 +1,53 @@
+{
+  "manifest_version": 3,
+  "name": "Sticky Notes",
+  "description": "Add sticky notes to any website, save them, and view them anytime!",
+  "version": "0.7",
+  "icons": {
+    "128": "assets/pin.png"
+  },
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting",
+    "contextMenus",
+    "identity"
+  ],
+  "oauth2": {
+    "client_id": "666390814833-bp6crb0bgfn7a3gmu2erhuomd9uma35k.apps.googleusercontent.com",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.email",
+      "https://www.googleapis.com/auth/userinfo.profile"
+    ]
+  },
+  "host_permissions": [
+    "<all_urls>",
+    "https://pay.agent0s.dev/*"
+  ],
+  "background": {
+    "service_worker": "background/background.js"
+  },
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": "assets/pin.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content/content.js"],
+      "css": ["content/content.css"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "pages/installed.html",
+        "assets/bold.svg",
+        "assets/italic.svg",
+        "assets/underline.svg",
+        "assets/strikethrough.svg"
+      ],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}

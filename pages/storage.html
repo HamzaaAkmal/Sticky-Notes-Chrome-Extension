@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Storage - Sticky Notes</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="storage.css">
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/3.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css" />
+</head>
+<body>
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="../assets/pin.png" alt="Logo" class="logo">
+                <h2>Sticky Notes</h2>
+            </div>
+            <nav class="domain-nav">
+                <a href="dashboard.html" class="domain-link">
+                    <i class="fi fi-rr-apps"></i>
+                    <span>All Notes</span>
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="storage.html" class="storage-link active">
+                    <i class="fi fi-rr-cloud"></i>
+                    <span>Cloud Storage</span>
+                </a>
+            </div>
+        </aside>
+        <main class="main-content">
+            <header class="main-header">
+                <h1>Cloud Storage</h1>
+                <a href="diagnostic.html" class="diagnostic-link" style="margin-left: auto; padding: 8px 16px; background: #3b82f6; color: white; text-decoration: none; border-radius: 6px; font-size: 14px;">
+                    🔧 Run Diagnostics
+                </a>
+            </header>
+            <section class="storage-content">
+                <div class="storage-card">
+                    <div class="card-header">
+                        <i class="fi fi-rr-user"></i>
+                        <h2>Account</h2>
+                    </div>
+                    <div class="account-info" id="account-info">
+                        <div class="not-logged-in">
+                            <p>Sign in with your Google account to sync your notes across devices.</p>
+                            <button id="sign-in-btn" class="btn btn-primary">
+                                <i class="fi fi-rr-sign-in-alt"></i>
+                                Sign in with Google
+                            </button>
+                        </div>
+                        <div class="logged-in" style="display: none;">
+                            <div class="user-profile">
+                                <img id="user-avatar" src="" alt="User Avatar" class="user-avatar">
+                                <div class="user-details">
+                                    <h3 id="user-name"></h3>
+                                    <p id="user-email"></p>
+                                </div>
+                            </div>
+                            <button id="sign-out-btn" class="btn btn-secondary">
+                                <i class="fi fi-rr-sign-out-alt"></i>
+                                Sign Out
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="storage-card">
+                    <div class="card-header">
+                        <i class="fi fi-rr-cloud-upload"></i>
+                        <h2>Sync Status</h2>
+                    </div>
+                    <div class="sync-info">
+                        <div class="sync-status" id="sync-status">
+                            <div class="status-indicator">
+                                <span class="status-dot" id="status-dot"></span>
+                                <p id="status-text">Not synced</p>
+                            </div>
+                            <p class="last-sync" id="last-sync">Never synced</p>
+                        </div>
+                        <div class="sync-actions">
+                            <button id="manual-sync-btn" class="btn btn-primary" disabled>
+                                <i class="fi fi-rr-refresh"></i>
+                                Sync Now
+                            </button>
+                            <button id="auto-sync-toggle" class="btn btn-secondary" disabled>
+                                <i class="fi fi-rr-toggle-off"></i>
+                                <span id="auto-sync-text">Enable Auto-Sync</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="storage-card">
+                    <div class="card-header">
+                        <i class="fi fi-rr-stats"></i>
+                        <h2>Storage Info</h2>
+                    </div>
+                    <div class="storage-stats">
+                        <div class="stat-item">
+                            <span class="stat-label">Total Notes:</span>
+                            <span class="stat-value" id="total-notes">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Local Notes:</span>
+                            <span class="stat-value" id="local-notes">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Cloud Notes:</span>
+                            <span class="stat-value" id="cloud-notes">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Last Updated:</span>
+                            <span class="stat-value" id="last-updated">Never</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="storage-card danger-zone">
+                    <div class="card-header">
+                        <i class="fi fi-rr-exclamation"></i>
+                        <h2>Danger Zone</h2>
+                    </div>
+                    <div class="danger-actions">
+                        <p>These actions are permanent and cannot be undone.</p>
+                        <button id="delete-cloud-btn" class="btn btn-danger" disabled>
+                            <i class="fi fi-rr-trash"></i>
+                            Delete All Cloud Data
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="storage.js"></script>
+</body>
+</html>
