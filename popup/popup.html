@@ -16,7 +16,7 @@
     <div class="rate-banner">
         <div class="banner-content">
             <i class="fi fi-rr-star"></i>
-            <span>Love Sticky Notes?</span>
+            <span>Made with ❤️ for you! Show some love ⭐</span>
         </div>
         <a href="https://chrome.google.com/webstore" target="_blank" class="banner-cta">
             Rate Us <i class="fi fi-rr-arrow-small-right"></i>
@@ -25,24 +25,22 @@
     
     <div class="sticky-box">
         <div class="ap-sn-title-box">
-            <img src="../assets/pin.png" alt="Sticky Notes Logo" class="ap-sn-logo" />
             <div class="header-right-controls">
                 <button id="popup-theme-picker-btn" class="popup-theme-picker-btn" title="Change theme color">
                     <i class="fi fi-rr-moon"></i>
                 </button>
-                <div class="popup-theme-palette" id="popup-theme-palette" style="display: none;">
+                <div class="popup-theme-palette" id="popup-theme-palette">
                     <div class="palette-header">Choose Theme</div>
                     <div class="color-swatches">
-                        <div class="popup-color-swatch" data-color="yellow" style="background: linear-gradient(135deg, #ffd165 0%, #ffb84d 100%);"></div>
-                        <div class="popup-color-swatch" data-color="pink" style="background: linear-gradient(135deg, #ff9b71 0%, #ff7f6e 100%);"></div>
-                        <div class="popup-color-swatch" data-color="blue" style="background: linear-gradient(135deg, #a0d1e8 0%, #7eb5d3 100%);"></div>
-                        <div class="popup-color-swatch" data-color="purple" style="background: linear-gradient(135deg, #d3a0e8 0%, #b77ed3 100%);"></div>
-                        <div class="popup-color-swatch" data-color="green" style="background: linear-gradient(135deg, #a0e8b1 0%, #7ed396 100%);"></div>
-                        <div class="popup-color-swatch" data-color="red" style="background: linear-gradient(135deg, #e8a0a0 0%, #d37e7e 100%);"></div>
+                        <div class="popup-color-swatch swatch-yellow" data-color="yellow"></div>
+                        <div class="popup-color-swatch swatch-pink" data-color="pink"></div>
+                        <div class="popup-color-swatch swatch-blue" data-color="blue"></div>
+                        <div class="popup-color-swatch swatch-purple" data-color="purple"></div>
+                        <div class="popup-color-swatch swatch-green" data-color="green"></div>
+                        <div class="popup-color-swatch swatch-red" data-color="red"></div>
                     </div>
                 </div>
                 <div class="search-container">
-                    <i class="fi fi-rr-search"></i>
                     <input type="text" id="search-input" placeholder="Search notes..." />
                 </div>
                 <a href="../pages/dashboard.html" target="_blank" class="dashboard-link" title="Open Dashboard">
@@ -61,12 +59,46 @@
             <div class="footer-content">
                 <span class="app-version">v0.7</span>
                 <span class="footer-divider">•</span>
-                <a href="https://downlabs.com" target="_blank" class="powered-by">
+                <a href="https://linkedin.com/in/hamzaaakmal" target="_blank" class="powered-by">
                     Powered by <strong>Downlabs</strong>
                 </a>
             </div>
         </div>
 
+    </div>
+
+    <!-- First-Time Login Dialog -->
+    <div id="first-time-login-overlay" class="login-overlay">
+        <div class="login-dialog">
+            <div class="login-icon">
+                <i class="fi fi-rr-cloud-check"></i>
+            </div>
+            <h2 class="login-title">Save Your Notes Forever!</h2>
+            <p class="login-description">Sign in with Google to sync your notes across all devices and never lose them.</p>
+            <div class="login-benefits">
+                <div class="benefit-item">
+                    <i class="fi fi-rr-check-circle"></i>
+                    <span>Automatic cloud backup</span>
+                </div>
+                <div class="benefit-item">
+                    <i class="fi fi-rr-check-circle"></i>
+                    <span>Access from any device</span>
+                </div>
+                <div class="benefit-item">
+                    <i class="fi fi-rr-check-circle"></i>
+                    <span>Never lose your notes</span>
+                </div>
+            </div>
+            <div class="login-actions">
+                <button id="login-now-btn" class="login-btn primary">
+                    <i class="fi fi-brands-google"></i>
+                    Sign in with Google
+                </button>
+                <button id="login-later-btn" class="login-btn secondary">
+                    Maybe Later
+                </button>
+            </div>
+        </div>
     </div>
 
     <!-- New Note Button -->

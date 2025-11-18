@@ -209,6 +209,102 @@
             color: #666;
             font-weight: 600;
         }
+
+        /* Login Section Styles */
+        .login-section {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 32px;
+            margin-top: 40px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .login-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 24px;
+            background: linear-gradient(135deg, #ffd165 0%, #ffb84d 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 24px rgba(255, 209, 101, 0.4);
+        }
+
+        .login-icon i {
+            font-size: 42px;
+            color: white;
+        }
+
+        .login-section h2 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #333;
+            margin: 0 0 16px 0;
+        }
+
+        .login-section p {
+            font-size: 16px;
+            color: #666;
+            margin: 0 0 32px 0;
+            line-height: 1.6;
+        }
+
+        .login-benefits {
+            text-align: left;
+            margin-bottom: 32px;
+            background: #f9f9f9;
+            border-radius: 16px;
+            padding: 24px;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 16px;
+            font-size: 15px;
+            color: #555;
+        }
+
+        .benefit-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .benefit-item i {
+            font-size: 24px;
+            color: #4CAF50;
+            flex-shrink: 0;
+        }
+
+        .login-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 16px 48px;
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #ffd165 0%, #ffb84d 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 209, 101, 0.4);
+            text-decoration: none;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 209, 101, 0.5);
+        }
+
+        .login-btn i {
+            font-size: 22px;
+        }
     </style>
 </head>
 <body>
@@ -216,10 +312,10 @@
     <div class="rate-banner">
         <div class="banner-content">
             <i class="fi fi-rr-star"></i>
-            <span>Love Sticky Notes? Support us!</span>
+            <span>Made with ❤️ for you! Show some love ⭐</span>
         </div>
         <a href="https://chrome.google.com/webstore" target="_blank" class="banner-cta">
-            Rate Us <i class="fi fi-rr-arrow-small-right"></i>
+            Rate on Chrome Store <i class="fi fi-rr-arrow-small-right"></i>
         </a>
     </div>
     
@@ -252,6 +348,33 @@
                 <h3>Dashboard View</h3>
                 <p>Manage all your notes in one beautiful dashboard</p>
             </div>
+        </div>
+
+        <!-- Login Section -->
+        <div class="login-section" id="login-section">
+            <div class="login-icon">
+                <i class="fi fi-rr-cloud-check"></i>
+            </div>
+            <h2>Save Your Notes Forever!</h2>
+            <p>Sign in with Google to sync your notes across all devices and never lose them.</p>
+            <div class="login-benefits">
+                <div class="benefit-item">
+                    <i class="fi fi-rr-check-circle"></i>
+                    <span>Automatic cloud backup</span>
+                </div>
+                <div class="benefit-item">
+                    <i class="fi fi-rr-check-circle"></i>
+                    <span>Access from any device</span>
+                </div>
+                <div class="benefit-item">
+                    <i class="fi fi-rr-check-circle"></i>
+                    <span>Never lose your notes</span>
+                </div>
+            </div>
+            <a href="storage.html" class="login-btn">
+                <i class="fi fi-brands-google"></i>
+                Sign in with Google
+            </a>
         </div>
 
         <div class="footer">

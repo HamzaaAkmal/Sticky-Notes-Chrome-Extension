@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     themeBtn.addEventListener('click', (e) => {
       e.stopPropagation();
-      themePalette.style.display = themePalette.style.display === 'none' ? 'block' : 'none';
+      themePalette.classList.toggle('show');
     });
     
     document.querySelectorAll('.popup-color-swatch').forEach(swatch => {
@@ -89,13 +89,13 @@ document.addEventListener('DOMContentLoaded', () => {
         e.stopPropagation();
         const colorKey = swatch.dataset.color;
         applyTheme(colorKey);
-        themePalette.style.display = 'none';
+        themePalette.classList.remove('show');
       });
     });
     
     document.addEventListener('click', (e) => {
       if (!e.target.closest('.popup-theme-picker-btn') && !e.target.closest('.popup-theme-palette')) {
-        themePalette.style.display = 'none';
+        themePalette.classList.remove('show');
       }
     });
   }
@@ -103,6 +103,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize theme
   loadTheme();
   initThemePicker();
+
+  // Check if first time opening popup and show login dialog
+  checkFirstTimeUser();
 
   // Mock data for development when chrome.storage is not available
   const mockNotesData = {
@@ -137,6 +140,52 @@ document.addEventListener('DOMContentLoaded', () => {
       },
     ],
   };
+
+  /**
+   * Check if this is the first time user opens popup and show login dialog
+   */
+  function checkFirstTimeUser() {
+    chrome.storage.local.get(['firstTimePopupShown', 'userToken'], (result) => {
+      // Show dialog if: first time AND not logged in
+      if (!result.firstTimePopupShown && !result.userToken) {
+        showLoginDialog();
+      }
+    });
+  }
+
+  /**
+   * Show the first-time login dialog
+   */
+  function showLoginDialog() {
+    const overlay = document.getElementById('first-time-login-overlay');
+    if (!overlay) return;
+
+    overlay.classList.add('show');
+
+    // Login Now button
+    const loginNowBtn = document.getElementById('login-now-btn');
+    if (loginNowBtn) {
+      loginNowBtn.addEventListener('click', () => {
+        // Mark as shown
+        chrome.storage.local.set({ firstTimePopupShown: true });
+        // Hide dialog
+        overlay.classList.remove('show');
+        // Open cloud storage page for login
+        chrome.tabs.create({ url: chrome.runtime.getURL('pages/storage.html') });
+      });
+    }
+
+    // Maybe Later button
+    const loginLaterBtn = document.getElementById('login-later-btn');
+    if (loginLaterBtn) {
+      loginLaterBtn.addEventListener('click', () => {
+        // Mark as shown so it doesn't appear again
+        chrome.storage.local.set({ firstTimePopupShown: true });
+        // Hide dialog
+        overlay.classList.remove('show');
+      });
+    }
+  }
 
   /**
    * Extracts the main domain from a given URL.
